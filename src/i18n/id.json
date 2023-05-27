@@ -1,0 +1,45 @@
+{
+  "common": {
+    "add": "Tambah",
+    "confirm": "Konfirmasi",
+    "cancel": "Batal",
+    "backTo": "Kembali ke {{menu}}",
+    "delete": "Hapus",
+    "save": "Simpan",
+    "discard": "Buang",
+    "edit": "Ubah",
+    "remove": "Hapus",
+    "search": "Cari",
+    "return": "Kembali",
+    "close": "Tutup",
+    "apply": "Terapkan",
+    "success": "Berhasil",
+    "error": "Gagal"
+  },
+  "purchase": {
+    "purchase": "Purchase",
+    "requestPurchase": "Request Purchase",
+    "purchaseOrder": "Purchase Order",
+    "recevingPO": "Receving PO",
+    "returnPO": "Return PO"
+  },
+  "sales": {
+    "sales": "Seles",
+    "requestOrder": "Request Order",
+    "order": "Order",
+    "deliveryOrder": "Delivery Order",
+    "returnDeliveryOrder": "Return Delivery Order"
+
+  },
+  "inventory": {
+    "inventory": "Inventory",
+    "itemStock": "Item Stock",
+    "stockAdjustment": "Stock Adjustment",
+    "stockOpname": "Stock Opname",
+    "goodsMovement": "Goods Movement"
+  },
+  "customer": {
+    "customer": "Customer",
+    "balances": "Balance"
+  }
+}

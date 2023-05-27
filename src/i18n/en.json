@@ -1,0 +1,45 @@
+{
+  "common": {
+    "add": "Add",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "backTo": "Back to {{menu}}",
+    "delete": "Delete",
+    "save": "Save",
+    "discard": "Discard",
+    "edit": "Edit",
+    "remove": "Remove",
+    "search": "Search",
+    "return": "Return",
+    "close": "Close",
+    "apply": "Apply",
+    "success": "Success",
+    "error": "Error"
+  },
+  "purchase": {
+    "purchase": "Purchase",
+    "requestPurchase": "Request Purchase",
+    "purchaseOrder": "Purchase Order",
+    "recevingPO": "Receving PO",
+    "returnPO": "Return PO"
+  },
+  "sales": {
+    "sales": "Sales",
+    "requestOrder": "Request Order",
+    "order": "Order",
+    "deliveryOrder": "Delivery Order",
+    "returnDeliveryOrder": "Return Delivery Order"
+
+  },
+  "inventory": {
+    "inventory": "Inventory",
+    "itemStock": "Item Stock",
+    "stockAdjustment": "Stock Adjustment",
+    "stockOpname": "Stock Opname",
+    "goodsMovement": "Goods Movement"
+  },
+  "customer": {
+    "customer": "Customer",
+    "balances": "Balance"
+  }
+}
