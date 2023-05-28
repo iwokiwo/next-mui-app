@@ -12,6 +12,8 @@ import React, { useState } from "react";
 import Header from "@/app/(DashboardLayout)/layout/header/Header";
 import Sidebar from "@/app/(DashboardLayout)/layout/sidebar/Sidebar";
 
+import {Loading} from "../../app/(DashboardLayout)/components/shared/loading/loading";
+
 import i18n from '../../i18n/i18n';
 
 
@@ -84,6 +86,7 @@ export default function RootLayout({
           {/* ------------------------------------------- */}
         </Container>
       </PageWrapper>
+      <Loading />
     </MainWrapper>
   );
 }
