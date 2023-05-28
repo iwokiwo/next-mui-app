@@ -5,7 +5,7 @@
  * @modify date 2023-05-09 23:12:33
  */
 
-import React from "react";
+import React, { ReactNode } from "react";
 // mui imports
 import {
   ListItemIcon,
@@ -41,6 +41,20 @@ interface ItemType {
   hideMenu?: any;
   level?: number | any;
   pathDirect: string;
+}
+
+interface Props {
+  to: string;
+  children: ReactNode;
+}
+
+function SimpleLink(props: Props) {
+  const { to, children, ...restProps } = props;
+  return (
+      <a {...restProps} href={to}>
+        {children}
+      </a>
+  );
 }
 
 const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
@@ -120,7 +134,8 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
                     {item.children?.map( data =>
 
                         <ListItemButton
-                            component={Link}
+                            key={data.id}
+                            component={Link!}
                             href={data.href}
                             disabled={data.disabled}
                             selected={pathDirect === data.href}
@@ -148,7 +163,7 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
               </List>
               :
               <ListItemButton
-                  component={Link}
+                  component={Link!}
                   href={item.href}
                   disabled={item.disabled}
                   selected={pathDirect === item.href}

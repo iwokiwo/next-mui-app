@@ -7,7 +7,7 @@
 
 import UnitInterface from "./unit.interface";
 import {GetApi} from "../../infrastructure/consumeApi/axios/api/get-api";
-import {urlCreateUnit, urlDeleteUnit, UrlUnit, urlUpdateUnit} from "../../service/url";
+import {urlCreateUnit, urlDeleteUnit, UrlUnit, urlUpdateUnit} from "../../infrastructure/consumeApi/axios/api/url";
 import {PostApi} from "../../infrastructure/consumeApi/axios/api/post-api";
 import {PutApi} from "../../infrastructure/consumeApi/axios/api/put-api";
 import {UnitModel} from "../../domain/models/unit";
