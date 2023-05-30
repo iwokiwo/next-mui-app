@@ -9,13 +9,18 @@ import {create} from "zustand";
 import {devtools} from "zustand/middleware";
 import {AuthInterface} from "@/store/auth/auth.interface";
 import {AuthRepository} from "@/repository/auth/auth";
+import {saveString} from "@/domain/helpers/storage";
 
 const authObj = new AuthRepository()
 
 export const AuthStores = create<AuthInterface>()(
     devtools((set,get) => ({
-        setData: async (data:any) => {
+        login: async (data:any) => {
             const response = await authObj.store(data)
-            return response.data
+            if(response.code === 202){
+                await saveString("token",response.data.access_token)
+            }
+
+            return response
         },
     })))

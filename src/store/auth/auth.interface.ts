@@ -6,5 +6,5 @@
  */
 
 export interface AuthInterface {
-    setData: (data: any) => void;
+    login: (data: any) => void;
 }
