@@ -6,7 +6,10 @@
  */
 
 
-export let baseUrl=''
+export let baseUrl='http://149.129.236.35:9990/'
+
+//---------------------url Auth------------------------------
+export let urlLogin ='api/login'
 
 //---------------------url Item-------------------------------
 export let urlCreateItem='/api/v1/item/create'

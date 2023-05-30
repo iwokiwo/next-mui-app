@@ -6,14 +6,14 @@
  */
 
 import axios from "axios";
-import {PostConfig} from "../config/post-config";
+import {PostBearerConfig} from "../../config/post/post-bearer-config";
 
 
-export const PostApi = async (url: string, data: any): Promise<any> =>{
+export const PostBearerApi = async (url: string, data: any): Promise<any> =>{
 
     return await axios({
-        ...PostConfig,
-        url: `${PostConfig.baseUrl}${url}`,
+        ...PostBearerConfig,
+        url: `${PostBearerConfig.baseUrl}${url}`,
         data,
     }).then ( (response) => {
 
