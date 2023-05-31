@@ -20,12 +20,13 @@ export const globalAction = async (loading: any,notif: any,options: any = {}) =>
         }
 
         const res = await options.action()
-        // console.log("res",res)
-        setNotif(true, res.status!, res.message!)
+
+        setNotif(true, (res.data.code! === 200 || res.data.code! === 202) ? "success":"error", res.message!)
         //if (res) res.base?.map(message => setNotification(message))
 
         if (options.afterAction) options.afterAction()
     } catch (e: any) {
+
         if (options.onError) {
             options.onError()
         }

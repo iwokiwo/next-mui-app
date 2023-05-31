@@ -8,7 +8,7 @@
 import UnitInterface from "./unit.interface";
 import {GetApi} from "../../infrastructure/consumeApi/axios/api/get-api";
 import {urlCreateUnit, urlDeleteUnit, UrlUnit, urlUpdateUnit} from "../../infrastructure/consumeApi/axios/api/url";
-import {PostApi} from "../../infrastructure/consumeApi/axios/api/post-api";
+import {PostBearerApi} from "../../infrastructure/consumeApi/axios/api/post/post-bearer-api";
 import {PutApi} from "../../infrastructure/consumeApi/axios/api/put-api";
 import {UnitModel} from "../../domain/models/unit";
 
@@ -24,7 +24,7 @@ export class UnitRepository implements UnitInterface {
     }
     async store(data: any) {
         try {
-            return await PostApi(urlCreateUnit,data)
+            return await PostBearerApi(urlCreateUnit,data)
         } catch {
             return null;
         }
@@ -38,7 +38,7 @@ export class UnitRepository implements UnitInterface {
     }
     async delete(data: any) {
         try {
-            return await PostApi(urlDeleteUnit, data)
+            return await PostBearerApi(urlDeleteUnit, data)
         } catch {
             return null;
         }

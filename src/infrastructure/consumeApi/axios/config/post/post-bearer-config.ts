@@ -5,10 +5,11 @@
  * @modify date 2023-05-09 23:12:33
  */
 
-import {Params} from "./http.props";
+import { baseUrl } from "../../api/url";
+import {Params} from "../http.props";
 
-export const PostConfig : Params = {
-    baseUrl: "https://api.orderq.shop",
+export const PostBearerConfig : Params = {
+    baseUrl: baseUrl,
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
