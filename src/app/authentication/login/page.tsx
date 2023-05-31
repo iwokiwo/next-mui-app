@@ -7,6 +7,7 @@ import Logo from "@/app/(DashboardLayout)/layout/shared/logo/Logo";
 import AuthLogin from "../auth/AuthLogin";
 
 const Login2 = () => {
+
   return (
     <PageContainer title="Login" description="this is Login page">
       <Box
@@ -55,7 +56,7 @@ const Login2 = () => {
                     color="textSecondary"
                     mb={1}
                   >
-                    Your Social Campaigns
+
                   </Typography>
                 }
                 subtitle={
@@ -70,7 +71,7 @@ const Login2 = () => {
                       variant="h6"
                       fontWeight="500"
                     >
-                      New to Modernize?
+                      New Acount?
                     </Typography>
                     <Typography
                       component={Link}

@@ -10,7 +10,6 @@ import {PostConfig} from "@/infrastructure/consumeApi/axios/config/post/post-con
 
 
 export const PostApi = async (url: string, data: any): Promise<any> =>{
-
     return await axios({
         ...PostConfig,
         url: `${PostConfig.baseUrl}${url}`,

@@ -6,5 +6,13 @@
  */
 
 export interface AuthInterface {
+    dataAuth: {
+        username?: string,
+        password?: string,
+    }
+
+    setDataAuth: (data: any) => void;
+
+
     login: (data: any) => void;
 }

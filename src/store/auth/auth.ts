@@ -15,10 +15,20 @@ const authObj = new AuthRepository()
 
 export const AuthStores = create<AuthInterface>()(
     devtools((set,get) => ({
+        //---set default dataAuth
+        dataAuth:{username: 'dexterxx',password: "123456" } ,
+
+        //-- set value dataAuth
+        setDataAuth: (data:any) => {
+            set(() => ({
+                dataAuth: data
+            }));
+        },
+
         login: async (data:any) => {
             const response = await authObj.store(data)
-            if(response.code === 202){
-                await saveString("token",response.data.access_token)
+            if(response.data.code === 202){
+                await saveString("token",response.data.data.access_token)
             }
 
             return response
