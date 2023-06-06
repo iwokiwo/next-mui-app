@@ -24,6 +24,7 @@ import {globalAction} from "@/domain/helpers/global-action";
 import {AuthStores} from "@/store/auth/auth";
 import {NotifStore} from "@/store/notif/notifStore";
 import {LoadingStore} from "@/store/loading/loading";
+import {LoadingButton} from "@mui/lab";
 
 const validationSchema = yup.object({
   username: yup
@@ -52,6 +53,10 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
   const NotifStores ={setNotif}
   const LoadingStores ={setLoading}
 
+
+  const [loadingButtons, setLoadingButtons] = React.useState(false);
+
+
   const formik = useFormik({
     initialValues : {
       ...dataAuth
@@ -59,7 +64,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
        console.log("add",values)
-
+      setLoadingButtons(true);
       globalAction(LoadingStores, NotifStores,{
         action: async() => await login(values),
         afterAction: () => router.push('/')
@@ -163,15 +168,18 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
           </Stack>
         </Stack>
         <Box>
-          <Button
-              color="primary"
-              variant="contained"
+          <LoadingButton
               size="large"
               fullWidth
+              color="primary"
               type="submit"
+              loading={loadingButtons}
+              loadingPosition="start"
+              // startIcon={<SaveIcon />}
+              variant="contained"
           >
-            Sign In
-          </Button>
+            Login
+          </LoadingButton>
         </Box>
         {subtitle}
         </form>
