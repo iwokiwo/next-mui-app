@@ -17,6 +17,7 @@ export const GetBearerApi = async (url: string, data: any): Promise<any> =>{
         },
         method: 'get',
         url: `${baseUrl}${url}`,
+        params: data
     }).then ( (response) => {
         return response
     }).catch((error) =>{

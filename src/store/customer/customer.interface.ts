@@ -8,6 +8,25 @@
 export interface CustomerInterface {
 
     data:Array<any>;
+    pagination: object
+    dataParam: {
+        // id?: string,
+        // uuid?: string,
+        // created_at?: string,
+        // created_by?: string,
+        // updated_at?: string,
+        // updated_by?: string,
+        // deleted_by?: string,
+        // name?: string,
+        // register_number?: string,
+        // user_uuid?: string,
+        // birth_date?: string,
+        // email?: string,
+        // phone?: string,
+        limit?: string,
+        page?: string,
+        search?: string,
+    }
 
     dataStore: {
         birth_date?: string,
@@ -31,6 +50,8 @@ export interface CustomerInterface {
     }
 
     dataSelected: object
+
+    setDataParam: (data: any) => void;
 
     setDataSelected: (data: any) => void;
 

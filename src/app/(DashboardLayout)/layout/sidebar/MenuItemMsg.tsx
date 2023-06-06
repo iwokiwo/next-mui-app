@@ -186,7 +186,7 @@ const MenuitemMsg = [
     },
     {
         id: uniqueId(),
-        title: 'Customer',
+        title: 'customer.customer',
         icon: IconLayoutDashboard,
         href: '/customers',
     },

@@ -16,6 +16,25 @@ const customerObj = new CustomerRepository()
 export const CustomerStores = create<CustomerInterface>()(
     devtools((set,get) => ({
         data: [],
+        pagination:{},
+        dataParam:{
+            // id: "",
+            // uuid: "",
+            // created_at: "",
+            // created_by: "",
+            // updated_at: "",
+            // updated_by: "",
+            // deleted_by: "",
+            // name: "",
+            // register_number: "",
+            // user_uuid: "",
+            // birth_date: "",
+            // email: "",
+            // phone: "",
+            page: "1",
+            limit:"6",
+            search:""
+        },
         dataSelected:{},
         dataStore:{
             birth_date: "",
@@ -37,6 +56,11 @@ export const CustomerStores = create<CustomerInterface>()(
             user_uuid: ""
         } ,
 
+        setDataParam: (data:any) => {
+            set(() => ({
+                dataParam: data
+            }));
+        },
         setDataUpdate: (data:any) => {
             set(() => ({
                 dataUpdate: data
@@ -73,5 +97,6 @@ export const CustomerStores = create<CustomerInterface>()(
         getDataPagination: async (data) => {
             const response = await customerObj.fetch(data)
             set({ data: response.result})
+            set({pagination: response.pagination})
         },
     })))

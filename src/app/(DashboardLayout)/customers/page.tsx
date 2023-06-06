@@ -19,6 +19,7 @@ import {
     Typography,
     Card,
     CardContent,
+    TablePagination,
 } from '@mui/material';
 import React from "react";
 import {Box } from '@mui/material';
@@ -45,21 +46,54 @@ const Customers = () => {
     const { t } = useTranslation()
     const [openConfirm, setOpenConfirm] = React.useState({open: false, title:"", des:""})
     const [editForm, setEditForm] = React.useState(false)
+   // const [page, setPage] = React.useState(0);
+   //  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     const {setNotif} = NotifStore();
-    const {setDataUpdate,updateData,setDataStore,storeData,deleteData, dataSelected, setDataSelected, getDataPagination, data} = CustomerStores()
-    const {paginationStore, setDataPagination } = PaginationStore()
+    const {setDataUpdate,updateData,setDataStore,storeData,deleteData, dataSelected, setDataSelected, getDataPagination,
+        data, dataParam, setDataParam, pagination} = CustomerStores()
     const { setFormPopup } = FormPopupStore()
     const {setLoading } = LoadingStore()
+    const {paginationStore,setDataPagination, page, setPage,rowsPerPage,setRowsPerPage} = PaginationStore()
 
     const NotifStores ={setNotif}
     const LoadingStores ={setLoading}
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+        setDataPagination({
+            ...paginationStore,
+            page: newPage
+        })
+
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+        setDataPagination({
+            ...paginationStore,
+            size: parseInt(event.target.value, 10)
+        })
+    };
+
+    // const handleSearch = (e) =>{
+    //     let target = e.target;
+    //     setSearch(target.value)
+    //     if (e.key === 'Enter') {
+    //         setPaginationState({
+    //             ...paginationState,
+    //             search: target.value
+    //         })
+    //     }
+    //
+    // }
 
     React.useEffect(()=>{
         (async () => {
             try {
                 setLoading(true)
-                await getDataPagination(paginationStore)
+                await getDataPagination(dataParam)
             } finally {
                 setLoading(false)
             }
@@ -71,7 +105,7 @@ const Customers = () => {
 
         globalAction(LoadingStores, NotifStores,{
             action: async() => await deleteData(dataSelected),
-            afterAction: () => getDataPagination(paginationStore)
+            afterAction: () => getDataPagination(dataParam)
         })
     }
 
@@ -79,12 +113,12 @@ const Customers = () => {
     const onStore =  (data: any) => {
         globalAction(LoadingStores, NotifStores,{
             action: async() => await editForm?updateData(data):storeData(data),
-            afterAction: () => getDataPagination(paginationStore)
+            afterAction: () => getDataPagination(dataParam)
         })
         setFormPopup(false,"Form Add Unit",'sm')
 
     }
-
+    console.log("pagination",pagination, paginationStore)
     return (
         <URBS.PageContainer title="Sample Page" description="this is Sample page">
 
@@ -179,6 +213,14 @@ const Customers = () => {
                             ))}
                         </TableBody>
                     </URBS.TableItem>
+                    <TablePagination
+                        component="div"
+                        count={pagination.total_rows}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        rowsPerPage={rowsPerPage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
                 </>
             </URBS.DashboardCard>
             <URBS.FormPopup >

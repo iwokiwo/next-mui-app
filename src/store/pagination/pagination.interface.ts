@@ -7,6 +7,8 @@
 
 
 export interface PaginationInterface {
+    page: number
+    rowsPerPage: number
     paginationStore : {
         limit?: number,
         page?: number,
@@ -17,4 +19,6 @@ export interface PaginationInterface {
     }
 
     setDataPagination: (data: any) => void;
+    setPage: (data:any) => void;
+    setRowsPerPage: (data:any) =>void;
 }

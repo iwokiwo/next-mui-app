@@ -11,6 +11,8 @@ import {PaginationInterface} from "@/store/pagination/pagination.interface";
 
 export const PaginationStore = create<PaginationInterface>()(
     devtools((set,get) => ({
+        page: 0,
+        rowsPerPage:10,
         paginationStore:{
             limit: 10,
             page: 1,
@@ -20,6 +22,17 @@ export const PaginationStore = create<PaginationInterface>()(
             total_rows: 6
         } ,
 
+        setPage: (data: any) => {
+            set(() => ({
+                page:data
+            }));
+        },
+
+        setRowsPerPage: (data: any) => {
+            set(() => ({
+                rowsPerPage:data
+            }));
+        },
 
         setDataPagination: (data: any) => {
             set(() => ({
