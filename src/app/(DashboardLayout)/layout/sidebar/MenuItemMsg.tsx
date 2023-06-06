@@ -150,7 +150,7 @@ const MenuitemMsg = [
         id: uniqueId(),
         title: 'customer.balances',
         icon: IconLayoutDashboard,
-        href: '/balance',
+        href: '/sample-page',
     },
 
     {
@@ -168,7 +168,7 @@ const MenuitemMsg = [
                 id: uniqueId(),
                 title: 'Item',
                 icon: IconLayoutDashboard,
-                href: '/item',
+                href: '/sample-page',
             },
             {
                 id: uniqueId(),
@@ -188,13 +188,13 @@ const MenuitemMsg = [
         id: uniqueId(),
         title: 'Customer',
         icon: IconLayoutDashboard,
-        href: '/customer',
+        href: '/customers',
     },
     {
         id: uniqueId(),
         title: 'Company',
         icon: IconLayoutDashboard,
-        href: '/company',
+        href: '/sample-page',
     },
 ];
 

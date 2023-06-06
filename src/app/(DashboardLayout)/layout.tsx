@@ -9,12 +9,16 @@
 "use client";
 import { styled, Container, Box } from "@mui/material";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
+
 import Header from "@/app/(DashboardLayout)/layout/header/Header";
 import Sidebar from "@/app/(DashboardLayout)/layout/sidebar/Sidebar";
 
 import {Loading} from "../../app/(DashboardLayout)/components/shared/loading/loading";
 
 import i18n from '../../i18n/i18n';
+import {load} from "@/domain/helpers/storage";
+
 
 
 const MainWrapper = styled("div")(() => ({
@@ -43,12 +47,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+    const router = useRouter();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
     React.useEffect(() => {
         i18n.changeLanguage("en")
     }, [])
+
+    React.useEffect(() => {
+        load("isAuth").then(data => {
+            if(data === false ) router.push('/authentication/login')
+        })
+    }, [router])
 
   return (
     <MainWrapper className="mainwrapper">

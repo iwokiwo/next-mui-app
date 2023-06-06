@@ -10,10 +10,14 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import {useRouter} from "next/navigation";
 
 import { IconListCheck, IconMail, IconUser } from "@tabler/icons-react";
+import {clear} from "@/domain/helpers/storage";
+
 
 const Profile = () => {
+  const router = useRouter();
   const [anchorEl2, setAnchorEl2] = useState(null);
   const handleClick2 = (event: any) => {
     setAnchorEl2(event.currentTarget);
@@ -21,6 +25,11 @@ const Profile = () => {
   const handleClose2 = () => {
     setAnchorEl2(null);
   };
+
+  const logout = () => {
+    clear()
+    router.push('/authentication/login')
+  }
 
   return (
     <Box>
@@ -83,10 +92,9 @@ const Profile = () => {
         </MenuItem>
         <Box mt={1} py={1} px={2}>
           <Button
-            href="/authentication/login"
+            onClick={logout}
             variant="outlined"
             color="primary"
-            component={Link}
             fullWidth
           >
             Logout
