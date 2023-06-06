@@ -7,14 +7,13 @@
 
 import { baseUrl } from "../../api/url";
 import {Params} from "../http.props";
-import { load } from "@/domain/helpers/storage";
 
-export const GetConfig : Params = {
+export const GetBearerConfig : Params = {
     baseUrl: baseUrl,
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${load("token")}`
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
     },
     method: 'get'
 }

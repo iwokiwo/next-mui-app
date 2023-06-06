@@ -6,7 +6,6 @@
  */
 
 
-
 /**
  * Loads a string from storage.
  *

@@ -53,12 +53,13 @@ export default function RootLayout({
 
     React.useEffect(() => {
         i18n.changeLanguage("en")
-
-        //load
-        if(load("isAuth") === false){
-            router.push('/authentication/login')
-        }
     }, [])
+
+    React.useEffect(() => {
+        load("isAuth").then(data => {
+            if(data === false ) router.push('/authentication/login')
+        })
+    }, [router])
 
   return (
     <MainWrapper className="mainwrapper">

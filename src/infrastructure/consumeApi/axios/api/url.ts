@@ -18,8 +18,16 @@ export let urlItem='/api/v1/item/searchAll'
 export let urlDeleteItem='/api/v1/item/delete/'
 
 export let UrlUnit='api/v1/front/unit'
+
 //-----------------------url unit--------------------------
 export let urlUnit ='/api/v1/front/unit'
 export let urlCreateUnit='/api/v1/unit/create'
 export let urlUpdateUnit='/api/v1/unit/update'
 export let urlDeleteUnit='/api/v1/unit/delete'
+
+
+//-----------------------url Customer--------------------------
+export let urlCustomer ='api/customers'
+export let urlStoreCustomer='api/customer'
+export let urlUpdateCustomer='api/customer/'
+export let urlDeleteCustomer='api/customer/'

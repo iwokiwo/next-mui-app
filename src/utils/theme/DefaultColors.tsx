@@ -62,7 +62,7 @@ const baselightTheme = createTheme({
       hoverOpacity: 0.02,
       hover: "#f6f9fc",
     },
-    divider: "#e5eaef",
+   // divider: "#e5eaef",
   },
   typography: {
     fontFamily: plus.style.fontFamily,
@@ -128,7 +128,7 @@ const baselightTheme = createTheme({
       styleOverrides: {
         ".MuiPaper-elevation9, .MuiPopover-root .MuiPaper-elevation": {
           boxShadow:
-            "rgb(145 158 171 / 30%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px !important",
+            "rgb(145 158 171 / 60%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px !important",
         },
       },
     },
