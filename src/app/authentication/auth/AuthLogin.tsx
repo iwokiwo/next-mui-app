@@ -63,11 +63,12 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-       console.log("add",values)
       setLoadingButtons(true);
       globalAction(LoadingStores, NotifStores,{
         action: async() => await login(values),
-        afterAction: () => router.push('/')
+        afterAction: () => {
+          router.push('/')
+        }
       })
     },
   })

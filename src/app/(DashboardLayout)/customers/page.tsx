@@ -24,13 +24,13 @@ import {useTranslation} from "react-i18next";
 import URBS from "../components";
 
 //----------store-----------------
-import { NotifStore } from '../../../store/notif/notifStore';
-import {LoadingStore} from "../../../store/loading/loading";
-import {FormPopupStore} from "../../../store/form-popup/form-popup-store";
+import { NotifStore } from '@/store/notif/notifStore';
+import {LoadingStore} from "@/store/loading/loading";
+import {FormPopupStore} from "@/store/form-popup/form-popup-store";
 import {CustomerStores} from "@/store/customer/customer";
 import {PaginationStore} from "@/store/pagination/pagination";
 
-import {globalAction} from "../../../domain/helpers/global-action";
+import {globalAction} from "@/domain/helpers/global-action";
 import CustomerList from "@/app/(DashboardLayout)/customers/cutomer-list";
 
 
@@ -110,13 +110,11 @@ const Customers = () => {
 
                     <CustomerList
                         onEdit={(x)=>{
-                            console.log("data delete",x)
                             setEditForm(true)
                             setDataUpdate({ id: x.id, name: x.name,branch_id: x.branch_id, branch: x.branch })
                             setFormPopup(true,t('customer.formEditTitle'),'md')
                         }}
                         onDelete={(x)=>{
-                            console.log("data edit",x)
                             setDataSelected(x)
                             setOpenConfirm({
                                 open:true,

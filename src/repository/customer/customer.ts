@@ -10,9 +10,9 @@ import {
     urlCustomer, urlDeleteCustomer,
     urlStoreCustomer,
     urlUpdateCustomer,
-} from "../../infrastructure/consumeApi/axios/api/url";
-import {PostBearerApi} from "../../infrastructure/consumeApi/axios/api/post/post-bearer-api";
-import {PutApi} from "../../infrastructure/consumeApi/axios/api/put-api";
+} from "@/infrastructure/consumeApi/axios/api/url";
+import {PostBearerApi} from "@/infrastructure/consumeApi/axios/api/post/post-bearer-api";
+import {PutApi} from "@/infrastructure/consumeApi/axios/api/put-api";
 import {GetBearerApi} from "@/infrastructure/consumeApi/axios/api/get/get-bearer-api";
 
 export class CustomerRepository implements CustomerInterface {
