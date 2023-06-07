@@ -97,6 +97,6 @@ export const CustomerStores = create<CustomerInterface>()(
         getDataPagination: async (data) => {
             const response = await customerObj.fetch(data)
             set({ data: response.result})
-            set({pagination: response.pagination})
+            set({totalRows: response.pagination.total_rows})
         },
     })))

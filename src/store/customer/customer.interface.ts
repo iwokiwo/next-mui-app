@@ -8,7 +8,7 @@
 export interface CustomerInterface {
 
     data:Array<any>;
-    pagination: object
+    totalRows: number
     dataParam: {
         // id?: string,
         // uuid?: string,

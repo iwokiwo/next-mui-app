@@ -44,6 +44,7 @@ import {PaginationStore} from "@/store/pagination/pagination";
 
 const Customers = () => {
     const { t } = useTranslation()
+    const tes=1
     const [openConfirm, setOpenConfirm] = React.useState({open: false, title:"", des:""})
     const [editForm, setEditForm] = React.useState(false)
    // const [page, setPage] = React.useState(0);
@@ -51,49 +52,31 @@ const Customers = () => {
 
     const {setNotif} = NotifStore();
     const {setDataUpdate,updateData,setDataStore,storeData,deleteData, dataSelected, setDataSelected, getDataPagination,
-        data, dataParam, setDataParam, pagination} = CustomerStores()
+        data,totalRows} = CustomerStores()
     const { setFormPopup } = FormPopupStore()
     const {setLoading } = LoadingStore()
-    const {paginationStore,setDataPagination, page, setPage,rowsPerPage,setRowsPerPage} = PaginationStore()
+    const {paginationStore,setDataPagination} = PaginationStore()
 
     const NotifStores ={setNotif}
     const LoadingStores ={setLoading}
-
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-        setDataPagination({
-            ...paginationStore,
-            page: newPage
-        })
-
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-        setDataPagination({
-            ...paginationStore,
-            size: parseInt(event.target.value, 10)
-        })
-    };
-
-    // const handleSearch = (e) =>{
-    //     let target = e.target;
-    //     setSearch(target.value)
-    //     if (e.key === 'Enter') {
-    //         setPaginationState({
-    //             ...paginationState,
-    //             search: target.value
-    //         })
-    //     }
-    //
-    // }
 
     React.useEffect(()=>{
         (async () => {
             try {
                 setLoading(true)
-                await getDataPagination(dataParam)
+                await getDataPagination(paginationStore)
+            } finally {
+                setLoading(false)
+            }
+        })()
+
+    },[paginationStore])
+
+    React.useEffect(()=>{
+        (async () => {
+            try {
+                setLoading(true)
+                await getDataPagination(paginationStore)
             } finally {
                 setLoading(false)
             }
@@ -105,7 +88,7 @@ const Customers = () => {
 
         globalAction(LoadingStores, NotifStores,{
             action: async() => await deleteData(dataSelected),
-            afterAction: () => getDataPagination(dataParam)
+            afterAction: () => getDataPagination(paginationStore)
         })
     }
 
@@ -113,12 +96,12 @@ const Customers = () => {
     const onStore =  (data: any) => {
         globalAction(LoadingStores, NotifStores,{
             action: async() => await editForm?updateData(data):storeData(data),
-            afterAction: () => getDataPagination(dataParam)
+            afterAction: () => getDataPagination(paginationStore)
         })
         setFormPopup(false,"Form Add Unit",'sm')
 
     }
-    console.log("pagination",pagination, paginationStore)
+
     return (
         <URBS.PageContainer title="Sample Page" description="this is Sample page">
 
@@ -213,13 +196,9 @@ const Customers = () => {
                             ))}
                         </TableBody>
                     </URBS.TableItem>
-                    <TablePagination
-                        component="div"
-                        count={pagination.total_rows}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        rowsPerPage={rowsPerPage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    <URBS.Pagination
+                        totalRows={totalRows}
+                        limit={paginationStore.limit!}
                     />
                 </>
             </URBS.DashboardCard>
