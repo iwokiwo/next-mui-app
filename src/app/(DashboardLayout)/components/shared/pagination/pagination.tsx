@@ -7,10 +7,9 @@
 
 
 import {PaginationProps} from "@/app/(DashboardLayout)/components/shared/pagination/pagination.props";
-import {Box, TablePagination} from "@mui/material";
+import {TablePagination} from "@mui/material";
 import React from "react";
 import {PaginationStore} from "@/store/pagination/pagination";
-import {CustomerStores} from "@/store/customer/customer";
 
 const Pagination: React.FC<PaginationProps> = (props: PaginationProps)  => {
     const {
@@ -22,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps)  => {
     const [tmpNewPage, setTmpNewPage] = React.useState(0)
     let pageCount = 1
 
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (event: any, newPage: any) => {
         if(newPage < tmpNewPage){
             pageCount = pageCount - 1
         }
@@ -36,7 +35,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps)  => {
         setTmpNewPage(newPage)
     };
 
-    const handleChangeRowsPerPage = (event) => {
+    const handleChangeRowsPerPage = (event: any) => {
         pageCount=1
         setTmpNewPage(0)
         setDataPagination({

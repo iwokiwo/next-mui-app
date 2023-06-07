@@ -40,6 +40,10 @@
   },
   "customer": {
     "customer": "Customers",
-    "balances": "Balance"
+    "balances": "Balance",
+    "formEditTitle": "Edit Customer",
+    "formAddTitle":"Add New Customer",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete Customer"
   }
 }

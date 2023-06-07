@@ -16,6 +16,7 @@ const customerObj = new CustomerRepository()
 export const CustomerStores = create<CustomerInterface>()(
     devtools((set,get) => ({
         data: [],
+        totalRows: 0,
         pagination:{},
         dataParam:{
             // id: "",
