@@ -31,8 +31,8 @@ export const AuthStores = create<AuthInterface>()(
             if(response.data.code === 202){
                 await saveString("token",response.data.data.access_token)
                 await save("isAuth",true)
-               // console.log("jwt_decode(response.data.data.access_token)",jwt_decode(response.data.data.access_token).sub!)
-               // await saveString("dataAuth", jwt_decode(response.data.data.access_token))
+                //console.log("jwt_decode(response.data.data.access_token)",jwt_decode(response.data.data.access_token).sub!)
+                //await saveString("dataAuth", jwt_decode(response.data.data.access_token))
             }
 
             return response

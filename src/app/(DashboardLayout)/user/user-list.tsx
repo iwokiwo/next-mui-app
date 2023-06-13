@@ -4,19 +4,23 @@ import React, {ReactElement} from 'react';
 import {useTranslation} from "react-i18next";
 
 import URBS from "@/app/(DashboardLayout)/components";
-import {IconButton, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
+import {Chip, IconButton, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
+import { useTheme } from '@mui/system'
 import {DeleteOutline} from "@mui/icons-material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
-interface CustomerListProps {
+interface UserListProps {
     onEdit: (data: any) => void
     onDelete: (data: any) => void
     data : Array<any>
 }
 
-const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => {
+
+const UserList: React.FC<UserListProps> = (props: UserListProps) => {
 
     const { t } = useTranslation()
+     const { palette } = useTheme()
+
     const {onDelete, onEdit, data} = props
 
     return (
@@ -34,6 +38,12 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
                     </TableCell>
                     <TableCell sx={{ px: 1 }} colSpan={4}>
                         Phone
+                    </TableCell>
+                    <TableCell  align="center" sx={{ px: 1 }} colSpan={4}>
+                        Status
+                    </TableCell>
+                    <TableCell sx={{ px: 1 }} colSpan={4}>
+                        Type
                     </TableCell>
                     <TableCell sx={{ px: 0 }} colSpan={1}>
                         Action
@@ -55,7 +65,7 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
                             colSpan={4}
                             sx={{ px: 1, textTransform: 'capitalize' }}
                         >
-                            {x.first_name}  {x.last_name}
+                            {x.username}
                         </TableCell>
                         <TableCell
                             align="left"
@@ -70,6 +80,23 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
                             sx={{ px: 1, textTransform: 'capitalize' }}
                         >
                             {x.phone}
+                        </TableCell>
+                        <TableCell
+                            align="center"
+                            colSpan={4}
+                            sx={{ px: 1, textTransform: 'capitalize' }}
+                        >
+                            {x.status === "active" ?
+                                <Chip label={x.status} color="success"  /> :
+                                <Chip label={x.status}  />
+                            }
+                        </TableCell>
+                        <TableCell
+                            align="left"
+                            colSpan={4}
+                            sx={{ px: 1, textTransform: 'capitalize' }}
+                        >
+                            {x.type}
                         </TableCell>
                         <TableCell
                             align="left"
@@ -100,4 +127,4 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
     );
 }
 
-export default CustomerList;
+export default UserList;

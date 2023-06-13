@@ -31,3 +31,21 @@ export let urlCustomer ='api/customers'
 export let urlStoreCustomer='api/customer'
 export let urlUpdateCustomer='api/customer/'
 export let urlDeleteCustomer='api/customer/'
+
+//-----------------------url Uom--------------------------
+export let urlUom ='api/unit_of_measurements'
+export let urlStoreUom='api/unit_of_measurements'
+export let urlUpdateUom='api/unit_of_measurements/'
+export let urlDeleteUom='api/unit_of_measurements/'
+
+//-----------------------url Category product--------------------------
+export let urlCategoryProduct ='api/category_products'
+export let urlStoreCategoryProduct='api/category_products'
+export let urlUpdateCategoryProduct='api/category_products/'
+export let urlDeleteCategoryProduct='api/category_products/'
+
+//-----------------------url User--------------------------
+export let urlUsers ='api/users'
+export let urlStoreUsers='api/users'
+export let urlUpdateUsers='api/users/'
+export let urlDeleteUsers='api/users/'

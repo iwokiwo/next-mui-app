@@ -8,13 +8,13 @@ import {IconButton, TableBody, TableCell, TableHead, TableRow} from "@mui/materi
 import {DeleteOutline} from "@mui/icons-material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
-interface CustomerListProps {
+interface UomListProps {
     onEdit: (data: any) => void
     onDelete: (data: any) => void
     data : Array<any>
 }
 
-const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => {
+const UomList: React.FC<UomListProps> = (props: UomListProps) => {
 
     const { t } = useTranslation()
     const {onDelete, onEdit, data} = props
@@ -28,12 +28,6 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
                     </TableCell>
                     <TableCell sx={{ px: 1 }} colSpan={4}>
                         Name
-                    </TableCell>
-                    <TableCell sx={{ px: 1 }} colSpan={4}>
-                        Email
-                    </TableCell>
-                    <TableCell sx={{ px: 1 }} colSpan={4}>
-                        Phone
                     </TableCell>
                     <TableCell sx={{ px: 0 }} colSpan={1}>
                         Action
@@ -55,21 +49,7 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
                             colSpan={4}
                             sx={{ px: 1, textTransform: 'capitalize' }}
                         >
-                            {x.first_name}  {x.last_name}
-                        </TableCell>
-                        <TableCell
-                            align="left"
-                            colSpan={4}
-                            sx={{ px: 1, textTransform: 'capitalize' }}
-                        >
-                            {x.email}
-                        </TableCell>
-                        <TableCell
-                            align="left"
-                            colSpan={4}
-                            sx={{ px: 1, textTransform: 'capitalize' }}
-                        >
-                            {x.phone}
+                            {x.name}
                         </TableCell>
                         <TableCell
                             align="left"
@@ -100,4 +80,4 @@ const CustomerList: React.FC<CustomerListProps> = (props: CustomerListProps) => 
     );
 }
 
-export default CustomerList;
+export default UomList;

@@ -22,17 +22,22 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps)  => {
     let pageCount = 1
 
     const handleChangePage = (event: any, newPage: any) => {
-        if(newPage < tmpNewPage){
-            pageCount = pageCount - 1
-        }
-        else{
-            pageCount = pageCount + 1
-        }
+
+        // if(newPage < tmpNewPage){
+        //     console.log("lewat -")
+        //     pageCount =newPage + 1
+        // }
+        // else{
+        //     console.log("lewat +")
+        //     pageCount = newPage + 1
+        // }
+        pageCount =newPage + 1
         setDataPagination({
             ...paginationStore,
             page: pageCount
         })
         setTmpNewPage(newPage)
+        // console.log("page",newPage,tmpNewPage, pageCount)
     };
 
     const handleChangeRowsPerPage = (event: any) => {
@@ -41,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps)  => {
         setDataPagination({
             ...paginationStore,
             limit: parseInt(event.target.value, 10),
-            page: 0
+            page: 1
         })
     };
 

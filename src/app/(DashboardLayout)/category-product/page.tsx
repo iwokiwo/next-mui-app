@@ -8,16 +8,9 @@
 'use client';
 import {
     Button,
-    IconButton,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
 } from '@mui/material';
 import React from "react";
-import {Delete, DeleteOutline} from "@mui/icons-material";
 import TextField from '@mui/material/TextField';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import {useTranslation} from "react-i18next";
 
 //----------component--------------
@@ -27,14 +20,17 @@ import URBS from "../components";
 import { NotifStore } from '@/store/notif/notifStore';
 import {LoadingStore} from "@/store/loading/loading";
 import {FormPopupStore} from "@/store/form-popup/form-popup-store";
-import {CustomerStores} from "@/store/customer/customer";
 import {PaginationStore} from "@/store/pagination/pagination";
+import {CategoryProductStores} from "@/store/category-product/category-product";
 
 import {globalAction} from "@/domain/helpers/global-action";
-import CustomerList from "@/app/(DashboardLayout)/customers/cutomer-list";
+import {isEmpty} from "lodash";
+import CategoryProductList from "@/app/(DashboardLayout)/category-product/category-product-list";
 
 
-const Customers = () => {
+
+
+const CategoryProduct = () => {
     const { t } = useTranslation()
 
     const [openConfirm, setOpenConfirm] = React.useState({open: false, title:"", des:""})
@@ -42,10 +38,10 @@ const Customers = () => {
 
     const {setNotif} = NotifStore();
     const {setDataUpdate,updateData,setDataStore,storeData,deleteData, dataSelected, setDataSelected, getDataPagination,
-        data,totalRows} = CustomerStores()
+        data,totalRows} = CategoryProductStores()
     const { setFormPopup } = FormPopupStore()
     const {setLoading } = LoadingStore()
-    const {paginationStore,setDataPagination} = PaginationStore()
+    const {paginationStore, setDataPagination} = PaginationStore()
 
     const NotifStores ={setNotif}
     const LoadingStores ={setLoading}
@@ -53,26 +49,14 @@ const Customers = () => {
     React.useEffect(()=>{
         (async () => {
             try {
-             //   setLoading(true)
+                //   setLoading(true)
                 await getDataPagination(paginationStore)
             } finally {
-              //  setLoading(false)
+                //  setLoading(false)
             }
         })()
 
     },[paginationStore])
-
-    // React.useEffect(()=>{
-    //     (async () => {
-    //         try {
-    //             setLoading(true)
-    //             await getDataPagination(paginationStore)
-    //         } finally {
-    //             setLoading(false)
-    //         }
-    //     })()
-    //
-    // },[])
 
     const onRemove = async () => {
 
@@ -88,21 +72,23 @@ const Customers = () => {
             action: async() => await editForm?updateData(data):storeData(data),
             afterAction: () => getDataPagination(paginationStore)
         })
-        setFormPopup(false,"Form Add Unit",'sm')
+        setFormPopup(false,t('uom.formAddTitle'),'sm')
 
     }
 
     return (
-        <URBS.PageContainer title="Sample Page" description="this is Sample page">
+        <URBS.PageContainer title="" description="">
 
-            <URBS.DashboardCard title={t('customer.customer')!}>
+            <URBS.DashboardCard title={t('category-product.category')!}>
                 <>
                     <URBS.CardHeader>
                         <TextField
-                            id="seach-customer"
+                            id="outlined-basic"
                             label={t(`common.search`)}
-                            fullWidth variant="outlined"
-                            size="medium" sx={{mr: 10, ml: -2}}
+                            fullWidth
+                            variant="outlined"
+                            size="medium"
+                            sx={{mr: 10, ml: -2}}
                             onChange={(e) => {
                                 setDataPagination({
                                     ...paginationStore,
@@ -113,35 +99,37 @@ const Customers = () => {
                         <Button color="primary" variant="contained" onClick={()=>{
                             setDataStore({ name: '',branch_id: 4})
                             setEditForm(false)
-                            setFormPopup(true,t('customer.formAddTitle'),'md')
+                            setFormPopup(true,t('category-product.formAddTitle'),'md')
                         }}>
                             {t(`common.add`)}
                         </Button>
                     </URBS.CardHeader>
 
-                    <CustomerList
-                        onEdit={(x)=>{
-                            setEditForm(true)
-                            setDataUpdate({ id: x.id, name: x.name,branch_id: x.branch_id, branch: x.branch })
-                            setFormPopup(true,t('customer.formEditTitle'),'md')
-                        }}
-                        onDelete={(x)=>{
-                            setDataSelected(x)
-                            setOpenConfirm({
-                                open:true,
-                                title:t('customer.confirmDeleteTitle'),
-                                des: `Apakah data ${x.name} akan di delete ?`
-                            })
-                        }}
-                        data={data}
-                    />
+                    {!isEmpty(data) &&
+                        <>
+                            <CategoryProductList
+                                onEdit={(x)=>{
+                                    setEditForm(true)
+                                    setDataUpdate({ id: x.id, name: x.name,branch_id: x.branch_id, branch: x.branch })
+                                    setFormPopup(true,t('category-product.formEditTitle'),'md')
+                                }}
+                                onDelete={(x)=>{
+                                    setDataSelected(x)
+                                    setOpenConfirm({
+                                        open:true,
+                                        title:t('category-product.confirmDeleteTitle'),
+                                        des: `Apakah data ${x.name} akan di delete ?`
+                                    })
+                                }}
+                                data={data}
+                            />
+                            <URBS.Pagination
+                                totalRows={totalRows}
+                                limit={paginationStore.limit!}
 
-                    <URBS.Pagination
-                        totalRows={totalRows}
-                        limit={paginationStore.limit!}
-
-                    />
-
+                            />
+                        </>
+                    }
                 </>
             </URBS.DashboardCard>
 
@@ -175,4 +163,4 @@ const Customers = () => {
     )
 }
 
-export default Customers
+export default CategoryProduct

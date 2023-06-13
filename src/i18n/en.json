@@ -45,5 +45,26 @@
     "formAddTitle":"Add New Customer",
     "confirmDeleteMessage": "",
     "confirmDeleteTitle": "Delete Customer"
+  },
+  "uom": {
+    "uom": "Unit of measure",
+    "formEditTitle": "Edit UOM",
+    "formAddTitle":"Add New UOM",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete UOM"
+  },
+  "category-product": {
+    "category": "Category",
+    "formEditTitle": "Edit Category product",
+    "formAddTitle":"Add New Category product",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete Category product"
+  },
+  "user": {
+    "user": "User",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
   }
 }

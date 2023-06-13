@@ -152,6 +152,12 @@ const MenuitemMsg = [
         icon: IconLayoutDashboard,
         href: '/sample-page',
     },
+    {
+        id: uniqueId(),
+        title: 'customer.customer',
+        icon: IconLayoutDashboard,
+        href: '/customers',
+    },
 
     {
         navlabel: true,
@@ -170,31 +176,37 @@ const MenuitemMsg = [
                 icon: IconLayoutDashboard,
                 href: '/sample-page',
             },
+            // {
+            //     id: uniqueId(),
+            //     title: 'Unit',
+            //     icon: IconLayoutDashboard,
+            //     href: '/unit',
+            // },
             {
                 id: uniqueId(),
-                title: 'Unit',
+                title: 'category-product.category',
                 icon: IconLayoutDashboard,
-                href: '/unit',
+                href: '/category-product',
             },
             {
                 id: uniqueId(),
-                title: 'Category',
+                title: 'uom.uom',
                 icon: IconLayoutDashboard,
-                href: '/sample-page',
+                href: '/uom',
             },
         ]
-    },
-    {
-        id: uniqueId(),
-        title: 'customer.customer',
-        icon: IconLayoutDashboard,
-        href: '/customers',
     },
     {
         id: uniqueId(),
         title: 'Company',
         icon: IconLayoutDashboard,
         href: '/sample-page',
+    },
+    {
+        id: uniqueId(),
+        title: 'user.user',
+        icon: IconLayoutDashboard,
+        href: '/user',
     },
 ];
 
