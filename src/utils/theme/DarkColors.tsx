@@ -60,7 +60,7 @@ const baseDarkTheme = createTheme({
         action: {
             disabledBackground: "rgba(73,82,88,0.12)",
             hoverOpacity: 0.02,
-            hover: "#f6f9fc",
+            hover: "#969798",
         },
         // divider: "#e5eaef",
         mode: 'dark',

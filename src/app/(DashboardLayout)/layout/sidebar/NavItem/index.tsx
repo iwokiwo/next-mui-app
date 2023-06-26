@@ -21,6 +21,7 @@ import Link from "next/link";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import { IconPoint } from "@tabler/icons-react";
 import {useTranslation} from "react-i18next";
+import {colors} from "@/asset";
 
 type NavGroup = {
   [x: string]: any;
@@ -87,7 +88,7 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
       paddingLeft: "10px",
       "&:hover": {
         backgroundColor: theme.palette.primary.light,
-        color: theme.palette.primary.main,
+        color: colors.primary.main,
       },
       "&.Mui-selected": {
         color: "white",
