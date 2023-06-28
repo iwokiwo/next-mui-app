@@ -75,7 +75,7 @@ const MonthlySummary = (props: IMonthlySummary)  => {
       }
       footer={
         <>
-          <Grid item xs={12} lg={12}>
+        
             <Grid container spacing={1}>
               <Grid item xs={8}>
                 <Box
@@ -115,7 +115,7 @@ const MonthlySummary = (props: IMonthlySummary)  => {
               </Grid>
 
             </Grid>
-          </Grid>
+        
 
 
         </>
