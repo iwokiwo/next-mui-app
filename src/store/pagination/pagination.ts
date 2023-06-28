@@ -12,14 +12,16 @@ import {PaginationInterface} from "@/store/pagination/pagination.interface";
 export const PaginationStore = create<PaginationInterface>()(
     devtools((set,get) => ({
         paginationStore:{
-            limit: 10,
+            // limit: 10,
+            // page: 1,
+            // sort:'id desc',
+            // search:'',
+            // total_pages: 1,
+            // total_rows: 6
             page: 1,
-            sort:'id desc',
-            search:'',
-            total_pages: 1,
-            total_rows: 6
+            limit:10,
+            search:""
         } ,
-
 
         setDataPagination: (data: any) => {
             set(() => ({

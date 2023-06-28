@@ -115,7 +115,7 @@ const Unit = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {data.map((x,index)=>(
+                            {data!.map((x,index)=>(
                                 <TableRow key={index} hover>
                                     <TableCell
                                         align="left"

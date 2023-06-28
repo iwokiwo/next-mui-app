@@ -8,21 +8,13 @@
 'use client';
 import {
     Button,
-    Grid,
-    Icon,
     IconButton,
-    Table,
     TableBody,
     TableCell,
     TableHead,
     TableRow,
-    Typography,
-    Card,
-    CardContent,
 } from '@mui/material';
 import React from "react";
-import {Box } from '@mui/material';
-import {styled} from "@mui/system";
 import {Delete, DeleteOutline} from "@mui/icons-material";
 import TextField from '@mui/material/TextField';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
@@ -32,25 +24,28 @@ import {useTranslation} from "react-i18next";
 import URBS from "../components";
 
 //----------store-----------------
-import { NotifStore } from '../../../store/notif/notifStore';
-import {LoadingStore} from "../../../store/loading/loading";
-import {FormPopupStore} from "../../../store/form-popup/form-popup-store";
-
-import {globalAction} from "../../../domain/helpers/global-action";
-import {UnitStores} from "../../../store/unit/unit";
+import { NotifStore } from '@/store/notif/notifStore';
+import {LoadingStore} from "@/store/loading/loading";
+import {FormPopupStore} from "@/store/form-popup/form-popup-store";
 import {CustomerStores} from "@/store/customer/customer";
 import {PaginationStore} from "@/store/pagination/pagination";
 
+import {globalAction} from "@/domain/helpers/global-action";
+import CustomerList from "@/app/(DashboardLayout)/customers/cutomer-list";
+
+
 const Customers = () => {
     const { t } = useTranslation()
+
     const [openConfirm, setOpenConfirm] = React.useState({open: false, title:"", des:""})
     const [editForm, setEditForm] = React.useState(false)
 
     const {setNotif} = NotifStore();
-    const {setDataUpdate,updateData,setDataStore,storeData,deleteData, dataSelected, setDataSelected, getDataPagination, data} = CustomerStores()
-    const {paginationStore, setDataPagination } = PaginationStore()
+    const {setDataUpdate,updateData,setDataStore,storeData,deleteData, dataSelected, setDataSelected, getDataPagination,
+        data,totalRows} = CustomerStores()
     const { setFormPopup } = FormPopupStore()
     const {setLoading } = LoadingStore()
+    const {paginationStore,setDataPagination} = PaginationStore()
 
     const NotifStores ={setNotif}
     const LoadingStores ={setLoading}
@@ -58,14 +53,26 @@ const Customers = () => {
     React.useEffect(()=>{
         (async () => {
             try {
-                setLoading(true)
+             //   setLoading(true)
                 await getDataPagination(paginationStore)
             } finally {
-                setLoading(false)
+              //  setLoading(false)
             }
         })()
 
-    },[])
+    },[paginationStore])
+
+    // React.useEffect(()=>{
+    //     (async () => {
+    //         try {
+    //             setLoading(true)
+    //             await getDataPagination(paginationStore)
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     })()
+    //
+    // },[])
 
     const onRemove = async () => {
 
@@ -91,99 +98,57 @@ const Customers = () => {
             <URBS.DashboardCard title={t('customer.customer')!}>
                 <>
                     <URBS.CardHeader>
-
-                        <TextField id="outlined-basic" label={t(`common.search`)} fullWidth variant="outlined" size="medium" sx={{mr: 10, ml: -2}}/>
-
+                        <TextField
+                            id="seach-customer"
+                            label={t(`common.search`)}
+                            fullWidth variant="outlined"
+                            size="medium" sx={{mr: 10, ml: -2}}
+                            onChange={(e) => {
+                                setDataPagination({
+                                    ...paginationStore,
+                                    search: e.target.value
+                                })
+                            }}
+                        />
                         <Button color="primary" variant="contained" onClick={()=>{
                             setDataStore({ name: '',branch_id: 4})
                             setEditForm(false)
-                            setFormPopup(true,"Form Add Customer",'sm')
+                            setFormPopup(true,t('customer.formAddTitle'),'md')
                         }}>
                             {t(`common.add`)}
                         </Button>
                     </URBS.CardHeader>
-                    <URBS.TableItem>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell sx={{ px: 1 }} colSpan={4}>
-                                    Name
-                                </TableCell>
-                                <TableCell sx={{ px: 1 }} colSpan={4}>
-                                    Email
-                                </TableCell>
-                                <TableCell sx={{ px: 1 }} colSpan={4}>
-                                    Phone
-                                </TableCell>
-                                <TableCell sx={{ px: 0 }} colSpan={1}>
-                                    Action
-                                </TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {data.map((x,index)=>(
-                                <TableRow key={index} hover>
-                                    <TableCell
-                                        align="left"
-                                        colSpan={4}
-                                        sx={{ px: 1, textTransform: 'capitalize' }}
-                                    >
-                                        {x.name}
-                                    </TableCell>
-                                    <TableCell
-                                        align="left"
-                                        colSpan={4}
-                                        sx={{ px: 1, textTransform: 'capitalize' }}
-                                    >
-                                        {x.email}
-                                    </TableCell>
-                                    <TableCell
-                                        align="left"
-                                        colSpan={4}
-                                        sx={{ px: 1, textTransform: 'capitalize' }}
-                                    >
-                                        {x.phone}
-                                    </TableCell>
-                                    <TableCell
-                                        align="left"
-                                        colSpan={1}
-                                        sx={{ px: 0 }}
-                                    >
 
-                                        <IconButton aria-label="delete" size="small" color="secondary"
-                                                    onClick={() => {
-                                                        setDataSelected(x)
+                    <CustomerList
+                        onEdit={(x)=>{
+                            setEditForm(true)
+                            setDataUpdate({ id: x.id, name: x.name,branch_id: x.branch_id, branch: x.branch })
+                            setFormPopup(true,t('customer.formEditTitle'),'md')
+                        }}
+                        onDelete={(x)=>{
+                            setDataSelected(x)
+                            setOpenConfirm({
+                                open:true,
+                                title:t('customer.confirmDeleteTitle'),
+                                des: `Apakah data ${x.name} akan di delete ?`
+                            })
+                        }}
+                        data={data}
+                    />
 
-                                                        setOpenConfirm({
-                                                            open:true,
-                                                            title: "Delete unit",
-                                                            des: `Apakah data ${x.name} akan di delete ?`
-                                                        })
-                                                    }}>
-                                            <DeleteOutline fontSize="small" />
-                                        </IconButton>
+                    <URBS.Pagination
+                        totalRows={totalRows}
+                        limit={paginationStore.limit!}
 
+                    />
 
-                                        <IconButton aria-label="delete" size="small" color="secondary"
-                                                    onClick={() => {
-
-                                                        setEditForm(true)
-                                                        setDataUpdate({ id: x.id, name: x.name,branch_id: x.branch_id, branch: x.branch })
-                                                        setFormPopup(true,"Form Edit Unit",'sm')
-                                                    }}>
-                                            <EditOutlinedIcon fontSize="small" />
-                                        </IconButton>
-
-
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </URBS.TableItem>
                 </>
             </URBS.DashboardCard>
+
             <URBS.FormPopup >
 
             </URBS.FormPopup>
+
             <URBS.ModalConfirm
                 open={openConfirm.open}
                 title={openConfirm.title}
@@ -200,8 +165,11 @@ const Customers = () => {
                     onRemove()
                 }}
             />
+
             <URBS.Notif />
+
             <URBS.ConfirmDialog />
+
         </URBS.PageContainer>
 
     )

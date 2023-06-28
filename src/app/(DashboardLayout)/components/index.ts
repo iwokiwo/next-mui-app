@@ -10,6 +10,7 @@ import {Loading} from "./shared/loading/loading";
 import ModalConfirm from "./shared/modal-confirm/modal-confirm";
 import Notif from "./shared/notif/Notif";
 import {TableItem} from "./shared/table/table-item";
+import Pagination from "@/app/(DashboardLayout)/components/shared/pagination/pagination";
 
 const URBS ={
     PageContainer,
@@ -22,5 +23,6 @@ const URBS ={
     ModalConfirm,
     Notif,
     TableItem,
+    Pagination,
 }
 export default URBS;

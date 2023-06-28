@@ -9,6 +9,7 @@
 import PropTypes from 'prop-types';
 // mui imports
 import { ListSubheader, styled, Theme } from '@mui/material';
+import {useTranslation} from "react-i18next";
 
 type NavGroup = {
   navlabel?: boolean;
@@ -31,8 +32,9 @@ const NavGroup = ({ item }: ItemType) => {
       padding: '3px 12px',
     }),
   );
+    const { t } = useTranslation()
   return (
-    <ListSubheaderStyle>{item.subheader}</ListSubheaderStyle>
+    <ListSubheaderStyle>{t(`${item.subheader}`)}</ListSubheaderStyle>
   );
 };
 
