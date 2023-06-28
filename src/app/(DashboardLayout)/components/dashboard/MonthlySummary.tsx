@@ -1,19 +1,29 @@
 
+import React from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from '@mui/material/styles';
 import { Stack, Typography, Avatar, Fab, Grid, Box } from '@mui/material';
-import { IconArrowDownRight, IconCurrencyDollar } from '@tabler/icons-react';
+import { IconArrowDownRight, IconCurrencyDollar, IconArrowUpRight } from '@tabler/icons-react';
 import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
 import { colors } from "@/asset";
+import {ModalConfirmProps} from "@/app/(DashboardLayout)/components/shared/modal-confirm/modal-confirm.props";
 
-const MonthlyEarnings = () => {
+
+interface IMonthlySummary {
+    title: string,
+    amount: string,
+    percentage : string
+}
+
+const MonthlySummary = (props: IMonthlySummary)  => {
   // chart color
   const theme = useTheme();
   const secondary = theme.palette.success.main;
   // const secondary = theme.palette.secondary.main;
-  const secondarylight = colors.tertiary.o25;
+  const secondarylight = colors.text.primary;
   const errorlight = '#fdede8';
+  const {title, percentage,amount} = props
 
   // chart
   const optionscolumnchart: any = {
@@ -35,9 +45,9 @@ const MonthlyEarnings = () => {
       width: 2,
     },
     fill: {
-      colors: [secondarylight],
+      //colors: [secondarylight],
       type: 'solid',
-      opacity: 0.05,
+      opacity: 0,
     },
     markers: {
       size: 0,
@@ -56,7 +66,7 @@ const MonthlyEarnings = () => {
 
   return (
     <DashboardCard
-      title="Sales"
+      title={title}
       action={
         // <Fab color="secondary" size="medium" sx={{ color: '#ffffff' }}>
         //   <IconCurrencyDollar width={24} />
@@ -73,7 +83,6 @@ const MonthlyEarnings = () => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignContent: 'flex-start',
-                    p: 1,
                     m: 1,
                  
                     // bgcolor: 'background.paper',
@@ -83,24 +92,22 @@ const MonthlyEarnings = () => {
                   }}
                 >
                   <Box >
-                    <Avatar sx={{ bgcolor: errorlight, width: 27, height: 27 }}>
-                      <IconArrowDownRight width={20} color="#FA896B" />
-                    </Avatar>
+
+                      <IconArrowUpRight width={20} color={colors.success.primary} />
+
                   </Box>
                   <Box sx={{ml: 1}}>
-                    <Typography variant="subtitle2" fontWeight="600">
-                      +9%
+                    <Typography color={colors.success.primary} variant="subtitle2" fontWeight="600">
+                      {percentage}
                     </Typography>
                   </Box>
                   <Box sx={{ml: 1}}>
                     <Typography variant="subtitle2" color="textSecondary">
-                      last year
+                      vs last month
                     </Typography>
                   </Box>
 
                 </Box>
-
-
 
               </Grid>
               <Grid item xs={4}>
@@ -116,7 +123,7 @@ const MonthlyEarnings = () => {
     >
       <>
         <Typography variant="h3" fontWeight="700" mt="-20px">
-          $6,820
+          {amount}
         </Typography>
         {/* <Stack direction="row" spacing={1} my={1} alignItems="center">
           <Avatar sx={{ bgcolor: errorlight, width: 27, height: 27 }}>
@@ -134,4 +141,4 @@ const MonthlyEarnings = () => {
   );
 };
 
-export default MonthlyEarnings;
+export default MonthlySummary;

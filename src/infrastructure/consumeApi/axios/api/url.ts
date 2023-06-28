@@ -6,7 +6,7 @@
  */
 
 
-export let baseUrl='http://149.129.236.35:9990/'
+export let baseUrl='https://api-ms-clinic.aksaratech.com/'
 
 //---------------------url Auth------------------------------
 export let urlLogin ='api/login'
