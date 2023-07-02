@@ -13,11 +13,11 @@ import MonthlyEarnings from '@/app/(DashboardLayout)/components/dashboard/Monthl
 import MonthlySummary from "@/app/(DashboardLayout)/components/dashboard/MonthlySummary";
 import URBS from './components';
 import React from 'react';
+import {useStyles} from "@/app/(DashboardLayout)/components/dashboard/dasboard.styles";
 
 const Dashboard = () => {
     const matches = useMediaQuery('(min-width:600px)');
-    //const [value, setValue] = React.useState(0);
-    console.log("metch", matches)
+    const classes = useStyles()
     return (
         <PageContainer title="Dashboard" description="this is Dashboard">
             <Box sx={{ flexGrow: 1 }}>
@@ -26,61 +26,16 @@ const Dashboard = () => {
 
                     <Grid item xs={12} sm={6} md={6}>
                         <Stack spacing={2} direction="row">
-                            <Button variant="outlined" sx={{ 
-                                p: 1, 
-                                borderColor: 'white',
-                                borderRadius: 2,
-                                ':hover': {
-                                    bgcolor: 'red', // theme.palette.primary.main
-                                    color: 'white',
-                                    borderColor: 'red'
-                                  } 
-                                }}><Typography sx={{color: 'white'}}>Daily</Typography></Button>
-                            <Button variant="outlined" sx={{ 
-                                p: 1, 
-                                borderColor: 'white',
-                                borderRadius: 2,
-                                ':hover': {
-                                    bgcolor: 'red', // theme.palette.primary.main
-                                    color: 'white',
-                                    borderColor: 'red'
-                                  } 
-                                }}><Typography sx={{color: 'white'}}>Weekly</Typography></Button>
-                            <Button variant="outlined"  sx={{ 
-                                p: 1, 
-                                borderColor: 'white',
-                                borderRadius: 2,
-                                ':hover': {
-                                    bgcolor: 'red', // theme.palette.primary.main
-                                    color: 'white',
-                                    borderColor: 'red'
-                                  } 
-                                }}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
-                            <Button variant="outlined"  sx={{ 
-                                p: 1, backgroundColor: 'white' , 
-                                borderColor: 'white',
-                                borderRadius: 2,
-                                ':hover': {
-                                    bgcolor: 'white', // theme.palette.primary.main
-                                    color: 'white',
-                                    borderColor: 'white'
-                                  }  
-                                }}> <Typography sx={{color: 'black'}}>Yearly</Typography></Button>
+                            <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Daily</Typography></Button>
+                            <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Weekly</Typography></Button>
+                            <Button variant="outlined"  className={classes.button}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
+                            <Button variant="outlined" className={classes.buttonClick}> <Typography sx={{color: 'black'}}>Yearly</Typography></Button>
                         </Stack>
                     </Grid>
                     <Grid item xs={12} sm={6} md={6}>
 
                         <Stack spacing={2} direction="row" sx={{justifyContent: matches? 'flex-end':'flex-start'}}>
-                        <Button variant="outlined" sx={{ 
-                                p: 1, 
-                                borderColor: 'white',
-                                borderRadius: 2,
-                                ':hover': {
-                                    bgcolor: 'red', // theme.palette.primary.main
-                                    color: 'white',
-                                    borderColor: 'red'
-                                  } 
-                                }}><Typography sx={{color: 'white'}}>Custome Date</Typography></Button>
+                        <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Custome Date</Typography></Button>
                                <Button variant="outlined"  sx={{ 
                                 p: 1, backgroundColor: 'red' , 
                                 borderColor: 'red',
