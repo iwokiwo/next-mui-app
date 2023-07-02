@@ -72,7 +72,7 @@ const Dashboard = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={4} sm={4} md={3} >
-                            <MonthlySummary title="Sales" amount="Rp 50.000" percentage="6%" />
+                            <MonthlySummary title="Sales" amount=" 50.000" percentage="6%" />
                         </Grid>
                         <Grid item xs={4} sm={4} md={3} >
                             <MonthlySummary title="New Sales" amount="Rp 50.000" percentage="6%" />
