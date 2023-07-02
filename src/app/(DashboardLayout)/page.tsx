@@ -28,7 +28,7 @@ const Dashboard = () => {
                         <Stack spacing={2} direction="row">
                             <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Daily</Typography></Button>
                             <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Weekly</Typography></Button>
-                            <Button variant="outlined"  className={classes.button}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
+                            <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
                             <Button variant="outlined" className={classes.buttonClick}> <Typography sx={{color: 'black'}}>Yearly</Typography></Button>
                         </Stack>
                     </Grid>
