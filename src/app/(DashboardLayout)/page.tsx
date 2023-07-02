@@ -1,5 +1,7 @@
 'use client'
-import { Grid, Box, Typography } from '@mui/material';
+import { Grid, Box, Typography, Button, Stack, BottomNavigation, BottomNavigationAction } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 // components
 import SalesOverview from '@/app/(DashboardLayout)/components/dashboard/SalesOverview';
@@ -9,48 +11,132 @@ import ProductPerformance from '@/app/(DashboardLayout)/components/dashboard/Pro
 import Blog from '@/app/(DashboardLayout)/components/dashboard/Blog';
 import MonthlyEarnings from '@/app/(DashboardLayout)/components/dashboard/MonthlyEarnings';
 import MonthlySummary from "@/app/(DashboardLayout)/components/dashboard/MonthlySummary";
+import URBS from './components';
+import React from 'react';
 
 const Dashboard = () => {
+    const matches = useMediaQuery('(min-width:600px)');
+    //const [value, setValue] = React.useState(0);
+    console.log("metch", matches)
     return (
         <PageContainer title="Dashboard" description="this is Dashboard">
-             <Box sx={{ flexGrow: 1 }}>
-             <Grid item xs={12} lg={12}>
+            <Box sx={{ flexGrow: 1 }}>
+           
                 <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    <Grid item xs={12}>
-                        <Typography
-                            variant="h1"
-                            sx={{
-                                background: "linear-gradient(45deg, #ffffff , #C83333 20%)",
-                                backgroundClip: "text",
-                                WebkitBackgroundClip: "text",
-                                color: "transparent",
 
-                            }}
-                        >
-                            Dasboard
-                        </Typography>
+                    <Grid item xs={12} sm={6} md={6}>
+                        <Stack spacing={2} direction="row">
+                            <Button variant="outlined" sx={{ 
+                                p: 1, 
+                                borderColor: 'white',
+                                borderRadius: 2,
+                                ':hover': {
+                                    bgcolor: 'red', // theme.palette.primary.main
+                                    color: 'white',
+                                    borderColor: 'red'
+                                  } 
+                                }}><Typography sx={{color: 'white'}}>Daily</Typography></Button>
+                            <Button variant="outlined" sx={{ 
+                                p: 1, 
+                                borderColor: 'white',
+                                borderRadius: 2,
+                                ':hover': {
+                                    bgcolor: 'red', // theme.palette.primary.main
+                                    color: 'white',
+                                    borderColor: 'red'
+                                  } 
+                                }}><Typography sx={{color: 'white'}}>Weekly</Typography></Button>
+                            <Button variant="outlined"  sx={{ 
+                                p: 1, 
+                                borderColor: 'white',
+                                borderRadius: 2,
+                                ':hover': {
+                                    bgcolor: 'red', // theme.palette.primary.main
+                                    color: 'white',
+                                    borderColor: 'red'
+                                  } 
+                                }}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
+                            <Button variant="outlined"  sx={{ 
+                                p: 1, backgroundColor: 'white' , 
+                                borderColor: 'white',
+                                borderRadius: 2,
+                                ':hover': {
+                                    bgcolor: 'white', // theme.palette.primary.main
+                                    color: 'white',
+                                    borderColor: 'white'
+                                  }  
+                                }}> <Typography sx={{color: 'black'}}>Yearly</Typography></Button>
+                        </Stack>
                     </Grid>
-                    <Grid item xs={4} sm={4} md={3} >
-                        <MonthlySummary title="Sales" amount="Rp 50.000" percentage="6%" />
+                    <Grid item xs={12} sm={6} md={6}>
+
+                        <Stack spacing={2} direction="row" sx={{justifyContent: matches? 'flex-end':'flex-start'}}>
+                        <Button variant="outlined" sx={{ 
+                                p: 1, 
+                                borderColor: 'white',
+                                borderRadius: 2,
+                                ':hover': {
+                                    bgcolor: 'red', // theme.palette.primary.main
+                                    color: 'white',
+                                    borderColor: 'red'
+                                  } 
+                                }}><Typography sx={{color: 'white'}}>Custome Date</Typography></Button>
+                               <Button variant="outlined"  sx={{ 
+                                p: 1, backgroundColor: 'red' , 
+                                borderColor: 'red',
+                                borderRadius: 2,
+                                ':hover': {
+                                    bgcolor: 'white', // theme.palette.primary.main
+                                    color: 'white',
+                                    borderColor: 'white'
+                                  }  
+                                }}> <Typography sx={{color: 'white'}}>Download</Typography></Button>
+                          
+                        </Stack>
                     </Grid>
-                    <Grid item xs={4} sm={4} md={3} >
-                        <MonthlySummary title="New Sales" amount="Rp 50.000" percentage="6%" />
-                    </Grid>
-                    <Grid item xs={4} sm={4} md={3} >
-                        <MonthlySummary title="New Customer" amount="Rp 50.000" percentage="6%" />
-                    </Grid>
-                    <Grid item xs={4} sm={4} md={3} >
-                        <MonthlySummary title="Transaction" amount="Rp 50.000" percentage="6%" />
-                    </Grid>
-                    <Grid item xs={4} sm={4} md={3} >
-                        <MonthlySummary title="Average Per Transaction" amount="Rp 50.000" percentage="6%" />
-                    </Grid>
-                    <Grid item xs={4} sm={4} md={3} >
-                        <MonthlySummary title="Average Per Day" amount="Rp 50.000" percentage="6%" />
-                    </Grid>
+
+
                 </Grid>
 
-            </Grid>
+
+                <Grid item xs={12} lg={12}>
+                    <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                        <Grid item xs={12}>
+                            <Typography
+                                variant="h1"
+                                sx={{
+                                    background: "linear-gradient(45deg, #ffffff , #C83333 20%)",
+                                    backgroundClip: "text",
+                                    WebkitBackgroundClip: "text",
+                                    color: "transparent",
+                                    mt: 1
+
+                                }}
+                            >
+                                Dasboard
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3} >
+                            <MonthlySummary title="Sales" amount="Rp 50.000" percentage="6%" />
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3} >
+                            <MonthlySummary title="New Sales" amount="Rp 50.000" percentage="6%" />
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3} >
+                            <MonthlySummary title="New Customer" amount="Rp 50.000" percentage="6%" />
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3} >
+                            <MonthlySummary title="Transaction" amount="Rp 50.000" percentage="6%" />
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3} >
+                            <MonthlySummary title="Average Per Transaction" amount="Rp 50.000" percentage="6%" />
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3} >
+                            <MonthlySummary title="Average Per Day" amount="Rp 50.000" percentage="6%" />
+                        </Grid>
+                    </Grid>
+
+                </Grid>
 
 
                 <Grid item xs={12} lg={12}>
@@ -95,8 +181,8 @@ const Dashboard = () => {
                 {/*  </Grid>*/}
                 {/*</Grid>*/}
                 <Grid item xs={12} lg={12}>
-                <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                   
+                    <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+
                         <Grid item xs={12} sm={5} md={6}>
                             <ProductPerformance />
                         </Grid>
@@ -109,10 +195,10 @@ const Dashboard = () => {
                         <Grid item xs={12} sm={5} md={6}>
                             <ProductPerformance />
                         </Grid>
-              
+
                     </Grid>
                 </Grid>
-                
+
                 {/*<Grid item xs={12} lg={8}>*/}
                 {/*<ProductPerformance />*/}
                 {/*</Grid>*/}
