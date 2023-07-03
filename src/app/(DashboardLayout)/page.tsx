@@ -14,6 +14,7 @@ import MonthlySummary from "@/app/(DashboardLayout)/components/dashboard/Monthly
 import URBS from './components';
 import React from 'react';
 import {useStyles} from "@/app/(DashboardLayout)/components/dashboard/dasboard.styles";
+import Header from "@/app/(DashboardLayout)/layout/header/Header";
 
 const Dashboard = () => {
     const matches = useMediaQuery('(min-width:600px)');
@@ -21,11 +22,15 @@ const Dashboard = () => {
     return (
         <PageContainer title="Dashboard" description="this is Dashboard">
             <Box sx={{ flexGrow: 1 }}>
-           
+               <URBS.Header
+                   title="Dashboard"
+                   menu={true}
+               />
+               <URBS.HeaderMenu>
                 <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
 
                     <Grid item xs={12} sm={6} md={6}>
-                        <Stack spacing={2} direction="row">
+                        <Stack spacing={2} direction="row" sx={{ml: -2}}>
                             <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Daily</Typography></Button>
                             <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Weekly</Typography></Button>
                             <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
@@ -36,41 +41,27 @@ const Dashboard = () => {
 
                         <Stack spacing={2} direction="row" sx={{justifyContent: matches? 'flex-end':'flex-start'}}>
                         <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Custome Date</Typography></Button>
-                               <Button variant="outlined"  sx={{ 
-                                p: 1, backgroundColor: 'red' , 
+                               <Button variant="outlined"  sx={{
+                                p: 1, backgroundColor: 'red' ,
                                 borderColor: 'red',
                                 borderRadius: 2,
                                 ':hover': {
                                     bgcolor: 'white', // theme.palette.primary.main
                                     color: 'white',
                                     borderColor: 'white'
-                                  }  
+                                  }
                                 }}> <Typography sx={{color: 'white'}}>Download</Typography></Button>
-                          
+
                         </Stack>
                     </Grid>
 
 
                 </Grid>
-
+               </URBS.HeaderMenu>
 
                 <Grid item xs={12} lg={12}>
                     <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                        <Grid item xs={12}>
-                            <Typography
-                                variant="h1"
-                                sx={{
-                                    background: "linear-gradient(45deg, #ffffff , #C83333 20%)",
-                                    backgroundClip: "text",
-                                    WebkitBackgroundClip: "text",
-                                    color: "transparent",
-                                    mt: 1
 
-                                }}
-                            >
-                                Dasboard
-                            </Typography>
-                        </Grid>
                         <Grid item xs={4} sm={4} md={3} >
                             <MonthlySummary title="Sales" amount=" 50.000" percentage="6%" />
                         </Grid>
@@ -92,39 +83,15 @@ const Dashboard = () => {
                     </Grid>
 
                 </Grid>
-
-
-                <Grid item xs={12} lg={12}>
-                    <Typography
-                        variant="h1"
-                        sx={{
-                            background: "linear-gradient(45deg, #ffffff , #C83333 30%)",
-                            backgroundClip: "text",
-                            WebkitBackgroundClip: "text",
-                            color: "transparent",
-                            m: 2
-                        }}
-                    >
-                        Static Overview
-                    </Typography>
-                </Grid>
+                <Box sx={{pt : 2, pb: 2}}>
+                <URBS.Header title="Static Overview" />
+                </Box>
                 <Grid item xs={12} lg={12}>
                     <SalesOverview />
                 </Grid>
-                <Grid item xs={12} lg={12}>
-                    <Typography
-                        variant="h1"
-                        sx={{
-                            background: "linear-gradient(45deg, #ffffff , #C83333 20%)",
-                            backgroundClip: "text",
-                            WebkitBackgroundClip: "text",
-                            color: "transparent",
-                            m: 2
-                        }}
-                    >
-                        Top Sales
-                    </Typography>
-                </Grid>
+                <Box sx={{pt : 2, pb: 2}}>
+                <URBS.Header title="Top Sales" />
+                </Box>
                 {/*<Grid item xs={12} lg={4}>*/}
                 {/* <Grid container spacing={3}>*/}
                 {/*  <Grid item xs={12}>*/}

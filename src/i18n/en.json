@@ -40,6 +40,7 @@
   },
   "customer": {
     "customer": "Customers",
+    "crm": "CRM",
     "balances": "Balance",
     "formEditTitle": "Edit Customer",
     "formAddTitle":"Add New Customer",
@@ -66,5 +67,73 @@
     "formAddTitle":"Add New User",
     "confirmDeleteMessage": "",
     "confirmDeleteTitle": "Delete User"
+  },
+  "report": {
+    "report": "Report"
+  },
+  "order": {
+    "order": "Orders",
+    "orderList": "Order List",
+    "schedule": "Schedule"
+  },
+  "item": {
+    "item": "Items",
+    "product": "Product",
+    "service": "Service",
+    "bundle": "Bundles"
+  },
+  "promotions": {
+    "promotions": "Promotions",
+    "voucher": "Voucher",
+    "service": "Service",
+    "discount": "Discounts",
+    "loyaltyPoints": "Loyalty Points"
+  },
+  "staff": {
+    "staff": "Staff",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
+  },
+  "outlet": {
+    "outlet": "Outlet",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
+  },
+
+  "setting": {
+    "setting": "Setting"
+  },
+  "company": {
+    "company": "Company",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
+  },
+  "payment": {
+    "patment": "Payment",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
+  },
+  "tax": {
+    "tax": "Tax",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
+  },
+  "notif": {
+    "notif": "Notification",
+    "formEditTitle": "Edit User",
+    "formAddTitle":"Add New User",
+    "confirmDeleteMessage": "",
+    "confirmDeleteTitle": "Delete User"
   }
+
 }

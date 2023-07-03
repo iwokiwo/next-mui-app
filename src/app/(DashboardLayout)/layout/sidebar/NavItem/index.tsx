@@ -87,15 +87,20 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
       color: theme.palette.text.secondary,
       paddingLeft: "10px",
       "&:hover": {
-        backgroundColor: theme.palette.primary.light,
-        color: colors.primary.main,
+        backgroundColor: "black",
+       // color: theme.palette.error.dark,
+        border: '1px solid red'
+        //borderColor:  theme.palette.error.dark
       },
       "&.Mui-selected": {
         color: "white",
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.grey["600"],
         "&:hover": {
-          backgroundColor: theme.palette.primary.main,
-          color: "white",
+         // backgroundColor: theme.palette.primary.main,
+          // borderStyle: 'solid',
+          // borderWidth: '1px',
+         // borderColor: theme.palette.grey["600"],
+         // color: "white",
         },
       },
     },
@@ -131,7 +136,7 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
-                  <List component="div" sx={{ml: 1}}>
+                  <List component="div" sx={{ml: 1, p: 1}}>
                     {item.children?.map( data =>
 
                         <ListItemButton

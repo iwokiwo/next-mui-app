@@ -11,6 +11,8 @@ import ModalConfirm from "./shared/modal-confirm/modal-confirm";
 import Notif from "./shared/notif/Notif";
 import {TableItem} from "./shared/table/table-item";
 import Pagination from "@/app/(DashboardLayout)/components/shared/pagination/pagination";
+import HeaderMenu from "@/app/(DashboardLayout)/components/shared/header-menu/header-menu";
+import Header from "@/app/(DashboardLayout)/components/shared/header/header";
 
 const URBS ={
     PageContainer,
@@ -24,5 +26,7 @@ const URBS ={
     Notif,
     TableItem,
     Pagination,
+    HeaderMenu,
+    Header
 }
 export default URBS;
