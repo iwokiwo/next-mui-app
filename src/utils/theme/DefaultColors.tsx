@@ -142,4 +142,65 @@ const baselightTheme = createTheme({
   },
 });
 
+export const colors = {
+  primary: {
+    main: 'rgba(255, 95, 0, 1)',
+    o75: 'rgba(255, 95, 0, 0.75)',
+    o50: 'rgba(255, 95, 0, 0.50)',
+    o25: 'rgba(255, 95, 0, 0.25)'
+  },
+  secondary: {
+    main: 'rgba(255, 95, 0, 1)',
+    o75: 'rgba(255, 95, 0, 0.75)',
+    o50: 'rgba(255, 95, 0, 0.50)',
+    o25: 'rgba(255, 95, 0, 0.25)'
+  },
+  tertiary: {
+    main: 'rgba(112, 212, 75, 1)',
+    o75: 'rgba(112, 212, 75, 0.75)',
+    o50: 'rgba(112, 212, 75, 0.50)',
+    o25: 'rgba(112, 212, 75, 0.25)'
+  },
+  text: {
+    primary: 'rgb(234,236,238,1)',
+    o75: 'rgba(234,236,238,0.75)',
+    o50: 'rgba(234,236,238,0.50)',
+    o25: 'rgba(234,236,238, 0.25)'
+  },
+  error: {
+    primary: 'rgba(177, 32, 40, 1)',
+    o75: 'rgba(177, 32, 40, 0.75)',
+    o50: 'rgba(177, 32, 40, 0.50)',
+    o25: 'rgba(177, 32, 40, 0.25)'
+  },
+  warning: {
+    primary: 'rgba(255, 199, 0, 1)',
+    o75: 'rgba(255, 199, 0, 0.75)',
+    o50: 'rgba(255, 199, 0, 0.50)',
+    o25: 'rgba(255, 199, 0, 0.25)'
+  },
+  info: {
+    primary: 'rgba(42, 94, 157, 1)',
+    o75: 'rgba(42, 94, 157, 0.75)',
+    o50: 'rgba(42, 94, 157, 0.50)',
+    o25: 'rgba(42, 94, 157, 0.25)'
+  },
+  success: {
+    primary: 'rgba(5, 150, 105, 1)',
+    o75: 'rgba(5, 150, 105, 0.75)',
+    o50: 'rgba(5, 150, 105, 0.50)',
+    o25: 'rgba(5, 150, 105, 0.25)'
+  },
+  border: {
+    primary: '#EAE7F0'
+  },
+  body: {
+    primary: 'white',
+    secondary: '#F8F8F8'
+  },
+  magnolia: 'rgba(234, 231, 240, 1)',
+  cultured: 'rgba(248, 248, 248, 1)'
+}
+
+
 export { baselightTheme };

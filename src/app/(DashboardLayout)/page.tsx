@@ -13,8 +13,9 @@ import MonthlyEarnings from '@/app/(DashboardLayout)/components/dashboard/Monthl
 import MonthlySummary from "@/app/(DashboardLayout)/components/dashboard/MonthlySummary";
 import URBS from './components';
 import React from 'react';
-import {useStyles} from "@/app/(DashboardLayout)/components/dashboard/dasboard.styles";
-import Header from "@/app/(DashboardLayout)/layout/header/Header";
+import {useStyles} from "@/utils/theme/Global.styles";
+import {CalendarMonth, Download} from "@mui/icons-material";
+import {colors} from "@/utils/theme/DarkColors";
 
 const Dashboard = () => {
     const matches = useMediaQuery('(min-width:600px)');
@@ -31,26 +32,17 @@ const Dashboard = () => {
 
                     <Grid item xs={12} sm={6} md={6}>
                         <Stack spacing={2} direction="row" sx={{ml: -2}}>
-                            <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Daily</Typography></Button>
-                            <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Weekly</Typography></Button>
-                            <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Monthly</Typography></Button>
-                            <Button variant="outlined" className={classes.buttonClick}> <Typography sx={{color: 'black'}}>Yearly</Typography></Button>
+                            <Button variant="outlined" className={classes.buttonOutlined}><Typography color={colors.text.primary}>Daily</Typography></Button>
+                            <Button variant="outlined" className={classes.buttonOutlined}><Typography color={colors.text.primary}>Weekly</Typography></Button>
+                            <Button variant="outlined" className={classes.buttonOutlined}><Typography color={colors.text.primary}>Monthly</Typography></Button>
+                            <Button variant="outlined" className={classes.buttonOutlinedSelect}> <Typography color={colors.text.o25}>Yearly</Typography></Button>
                         </Stack>
                     </Grid>
                     <Grid item xs={12} sm={6} md={6}>
 
                         <Stack spacing={2} direction="row" sx={{justifyContent: matches? 'flex-end':'flex-start'}}>
-                        <Button variant="outlined" className={classes.button}><Typography sx={{color: 'white'}}>Custome Date</Typography></Button>
-                               <Button variant="outlined"  sx={{
-                                p: 1, backgroundColor: 'red' ,
-                                borderColor: 'red',
-                                borderRadius: 2,
-                                ':hover': {
-                                    bgcolor: 'white', // theme.palette.primary.main
-                                    color: 'white',
-                                    borderColor: 'white'
-                                  }
-                                }}> <Typography sx={{color: 'white'}}>Download</Typography></Button>
+                        <Button variant="outlined" className={classes.buttonOutlined} endIcon={<CalendarMonth sx={{color: colors.text.primary}}/>}><Typography className={classes.typography}>Custome Date</Typography></Button>
+                               <Button variant="contained"className={classes.buttonContained} endIcon={<Download />}> <Typography className={classes.typography}>Download</Typography></Button>
 
                         </Stack>
                     </Grid>
